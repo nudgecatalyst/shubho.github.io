@@ -1110,15 +1110,17 @@
     line-height: 0;
     margin-bottom: 0;
   }
-  .footer-banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-    max-height: 320px;
-    object-fit: cover;
-    object-position: center;
-    margin-bottom: 0;
-  }
+.footer-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: bottom; /* ADD THIS */
+  max-height: 480px;
+  min-height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  margin-bottom: 0;
+}
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
