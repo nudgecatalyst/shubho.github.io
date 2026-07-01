@@ -1,1557 +1,804 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lifePRINT AI™ — Honoring the Transition from Manhood to Midhood</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LifePrint AI — Enter Your Healthspan</title>
+<meta name="description" content="A medical grade longevity membership that turns the science of healthy aging into measurable, compounding years of vitality." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0f0d0a;
-    --paper: #f5f0e8;
-    --cream: #ede7d9;
-    --rust: #b8420a;
-    --gold: #c9942a;
-    --dusty: #8a7f72;
-    --pale: #faf7f2;
-    --accent: #b8420a;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.6;
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 20px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    mix-blend-mode: multiply;
-  }
-
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
-    opacity: 0.7;
-  }
-
-  .nav-cta {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 10px 22px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .nav-cta:hover { background: var(--rust); transform: translateY(-1px); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    padding: 140px 64px 80px 64px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--rust);
-  }
-
-  .hero-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(48px, 5.5vw, 80px);
-    line-height: 1.0;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--rust);
-    display: block;
-  }
-
-  .hero-subtitle {
-    font-size: 20px;
-    color: var(--dusty);
-    line-height: 1.6;
-    max-width: 460px;
-    margin-bottom: 52px;
-    font-weight: 300;
-  }
-
-  .hero-cta-group { display: flex; flex-direction: column; gap: 16px; max-width: 340px; }
-
-  .btn-primary {
-    display: block;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 20px 36px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 4px 4px 0 var(--ink);
-    position: relative;
-  }
-  .btn-primary:hover {
-    background: var(--ink);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--rust);
-  }
-
-  .btn-secondary {
-    display: block;
-    background: transparent;
-    color: var(--ink);
-    padding: 18px 36px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-    border: 1.5px solid var(--ink);
-    transition: all 0.2s;
-  }
-  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
-
-  .price-tag {
-    margin-top: 24px;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .price-main {
-    font-family: 'Instrument Serif', serif;
-    font-size: 42px;
-    font-weight: 400;
-    color: var(--ink);
-  }
-  .price-note {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--dusty);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    line-height: 1.4;
-  }
-
-  /* Hero right */
-  .hero-right {
-    background: var(--ink);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-right-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 70% 40%, #2a1f12 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 30% 70%, #1a0d05 0%, transparent 60%);
-    background-color: #0f0d0a;
-  }
-
-  .orbital-art {
-    position: relative;
-    z-index: 2;
-    width: 420px;
-    height: 420px;
-  }
-
-  .orbit-ring { fill: none; stroke: rgba(201,148,42,0.15); stroke-width: 1; }
-  .orbit-ring-2 { stroke: rgba(184,66,10,0.2); }
-  .orbit-ring-3 { stroke: rgba(245,240,232,0.06); }
-  .planet-dot { fill: var(--gold); }
-  .planet-small { fill: rgba(184,66,10,0.8); }
-  .center-glyph { fill: none; stroke: var(--gold); stroke-width: 1.5; }
-
-  .hero-text-overlay {
-    position: absolute;
-    bottom: 48px;
-    left: 48px;
-    right: 48px;
-    z-index: 3;
-  }
-  .hero-text-overlay p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    font-style: italic;
-    color: rgba(245,240,232,0.45);
-    letter-spacing: 0.05em;
-    line-height: 1.7;
-  }
-
-  /* DIVIDER */
-  .section-rule { border: none; border-top: 1px solid rgba(15,13,10,0.12); margin: 0 64px; }
-
-  /* TRUST BAR */
-  .trust-bar {
-    background: var(--cream);
-    padding: 28px 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 64px;
-    flex-wrap: wrap;
-  }
-  .trust-item {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dusty);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rust); flex-shrink: 0; }
-
-  /* SECTION BASE */
-  section { padding: 120px 64px; position: relative; }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 48px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(184,66,10,0.2);
-    max-width: 120px;
-  }
-
-  /* MIRROR MOMENT — new opening section */
-  .mirror-section {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 100px 64px;
-    position: relative;
-    overflow: hidden;
-  }
-  .mirror-section::before {
-    content: '"';
-    position: absolute;
-    top: -60px;
-    left: 30px;
-    font-family: 'Instrument Serif', serif;
-    font-size: 400px;
-    color: rgba(201,148,42,0.03);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .mirror-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .mirror-left h2 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(34px, 4vw, 56px);
-    line-height: 1.1;
-    font-weight: 400;
-    color: var(--paper);
-    margin-bottom: 32px;
-  }
-  .mirror-left h2 em { font-style: italic; color: var(--gold); }
-  .mirror-left p {
-    font-size: 19px;
-    color: rgba(245,240,232,0.6);
-    line-height: 1.8;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-  .mirror-signals {
-    margin-top: 40px;
-    border-top: 1px solid rgba(245,240,232,0.1);
-    padding-top: 40px;
-  }
-  .mirror-signal {
-    font-family: 'Instrument Serif', serif;
-    font-size: 19px;
-    font-style: italic;
-    color: rgba(245,240,232,0.65);
-    padding: 13px 0;
-    border-bottom: 1px solid rgba(245,240,232,0.07);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .mirror-signal::before {
-    content: '→';
-    color: var(--rust);
-    font-style: normal;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-  .mirror-right {
-    padding-top: 8px;
-  }
-  .mirror-question-block {
-    background: rgba(245,240,232,0.04);
-    border: 1px solid rgba(245,240,232,0.1);
-    padding: 48px 40px;
-    position: relative;
-  }
-  .mirror-question-block::before {
-    content: 'THE THRESHOLD QUESTION';
-    position: absolute;
-    top: -1px;
-    left: 40px;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 5px 12px;
-  }
-  .mirror-q-text {
-    font-family: 'Instrument Serif', serif;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 1.6;
-    color: rgba(245,240,232,0.85);
-    margin-top: 20px;
-    margin-bottom: 32px;
-  }
-  .mirror-q-sub {
-    font-size: 16px;
-    color: rgba(245,240,232,0.45);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* WHAT IS IT */
-  .what-section { background: var(--pale); }
-
-  .what-grid {
-    display: grid;
-    grid-template-columns: 5fr 4fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .what-headline {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(36px, 4vw, 58px);
-    line-height: 1.1;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 32px;
-  }
-  .what-headline em { font-style: italic; color: var(--rust); }
-
-  .what-body {
-    font-size: 19px;
-    color: var(--dusty);
-    line-height: 1.75;
-    font-weight: 300;
-    margin-bottom: 24px;
-    max-width: 520px;
-  }
-
-  .what-callout {
-    border-left: 3px solid var(--rust);
-    padding: 20px 28px;
-    background: var(--cream);
-    margin-top: 32px;
-  }
-  .what-callout p {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-
-  .inputs-panel {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .inputs-panel::before {
-    content: '3';
-    position: absolute;
-    top: -20px;
-    right: 20px;
-    font-family: 'Instrument Serif', serif;
-    font-size: 200px;
-    color: rgba(201,148,42,0.05);
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .inputs-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-  }
-
-  .input-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(245,240,232,0.08);
-  }
-  .input-item:last-of-type { border-bottom: none; }
-
-  .input-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gold);
-    opacity: 0.6;
-    min-width: 24px;
-    margin-top: 4px;
-  }
-
-  .input-label { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--paper); line-height: 1.2; }
-  .input-sub { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: rgba(245,240,232,0.4); margin-top: 4px; font-style: italic; }
-
-  .inputs-cta {
-    margin-top: 36px;
-    display: block;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 18px 28px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-    transition: background 0.2s, transform 0.15s;
-    box-shadow: 3px 3px 0 var(--gold);
-  }
-  .inputs-cta:hover { background: var(--gold); transform: translate(-1px, -1px); }
-
-  /* DIMENSIONS */
-  .dimensions-section { background: var(--paper); }
-
-  .dimensions-intro { max-width: 640px; margin-bottom: 80px; }
-  .dimensions-intro h2 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(32px, 3.5vw, 52px);
-    line-height: 1.1;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-  }
-  .dimensions-intro p { font-size: 18px; color: var(--dusty); font-weight: 300; line-height: 1.7; }
-
-  .dimensions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-
-  .dim-card {
-    background: var(--cream);
-    padding: 40px 36px;
-    transition: background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .dim-card:hover { background: var(--ink); }
-  .dim-card:hover .dim-num,
-  .dim-card:hover .dim-title,
-  .dim-card:hover .dim-body { color: var(--paper); }
-  .dim-card:hover .dim-title { color: var(--gold); }
-  .dim-card:hover .dim-tags span { background: rgba(245,240,232,0.1); color: rgba(245,240,232,0.6); }
-
-  .dim-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--dusty); margin-bottom: 16px; transition: color 0.2s; }
-  .dim-title { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--ink); line-height: 1.2; margin-bottom: 16px; transition: color 0.2s; }
-  .dim-body { font-size: 15px; color: var(--dusty); line-height: 1.65; font-weight: 300; margin-bottom: 24px; transition: color 0.2s; }
-  .dim-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .dim-tags span {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: rgba(15,13,10,0.06);
-    color: var(--dusty);
-    padding: 5px 10px;
-    transition: all 0.2s;
-  }
-
-  /* WHY SECTION */
-  .why-section {
-    background: var(--ink);
-    color: var(--paper);
-    overflow: hidden;
-    position: relative;
-  }
-  .why-section::before {
-    content: '"';
-    position: absolute;
-    top: -60px;
-    left: 40px;
-    font-family: 'Instrument Serif', serif;
-    font-size: 400px;
-    color: rgba(201,148,42,0.04);
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-
-  .why-left h2 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(36px, 4vw, 58px);
-    line-height: 1.1;
-    font-weight: 400;
-    color: var(--paper);
-    margin-bottom: 32px;
-  }
-  .why-left h2 em { font-style: italic; color: var(--gold); }
-  .why-left p { font-size: 18px; color: rgba(245,240,232,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
-
-  .why-questions { margin-top: 40px; border-top: 1px solid rgba(245,240,232,0.1); padding-top: 40px; }
-  .why-q {
-    font-family: 'Instrument Serif', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: rgba(245,240,232,0.7);
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(245,240,232,0.07);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .why-q::before { content: '→'; color: var(--rust); font-style: normal; font-size: 16px; flex-shrink: 0; }
-
-  .story-card {
-    background: rgba(245,240,232,0.04);
-    border: 1px solid rgba(245,240,232,0.1);
-    padding: 48px 40px;
-    position: relative;
-  }
-  .story-card::before {
-    content: "FOUNDER'S NOTE";
-    position: absolute;
-    top: -1px;
-    left: 40px;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 5px 12px;
-  }
-  .story-text {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    font-style: italic;
-    line-height: 1.6;
-    color: rgba(245,240,232,0.8);
-    margin-bottom: 28px;
-    margin-top: 20px;
-  }
-  .story-byline { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
-
-  .why-cta {
-    margin-top: 48px;
-    display: block;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 20px 36px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-    box-shadow: 4px 4px 0 var(--gold);
-    transition: all 0.2s;
-  }
-  .why-cta:hover { background: var(--gold); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--paper); }
-
-  /* HOW IT WORKS */
-  .how-section { background: var(--cream); }
-
-  .how-headline {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(34px, 3.5vw, 52px);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 80px;
-    max-width: 500px;
-    line-height: 1.1;
-  }
-
-  .steps-list { counter-reset: steps; }
-
-  .step {
-    display: grid;
-    grid-template-columns: 80px 1fr 200px;
-    align-items: center;
-    gap: 40px;
-    padding: 40px 0;
-    border-bottom: 1px solid rgba(15,13,10,0.1);
-    counter-increment: steps;
-  }
-  .step:first-child { border-top: 1px solid rgba(15,13,10,0.1); }
-
-  .step-num { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--dusty); }
-  .step-num::before { content: '0' counter(steps); }
-
-  .step-content h3 { font-family: 'Instrument Serif', serif; font-size: 26px; font-weight: 400; margin-bottom: 8px; }
-  .step-content p { font-size: 16px; color: var(--dusty); font-weight: 300; line-height: 1.6; }
-
-  .step-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--rust);
-    border: 1px solid rgba(184,66,10,0.3);
-    padding: 8px 14px;
-    text-align: center;
-    line-height: 1.4;
-  }
-
-  /* WHAT YOU GET */
-  .get-section { background: var(--pale); }
-
-  .get-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-
-  .get-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(34px, 3.5vw, 52px);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 32px;
-  }
-  .get-title em { font-style: italic; color: var(--rust); }
-
-  .deliverables { list-style: none; }
-  .deliverable {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(15,13,10,0.08);
-  }
-  .deliverable:last-child { border-bottom: none; }
-
-  .del-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--rust);
-    color: var(--paper);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .del-label { font-family: 'Instrument Serif', serif; font-size: 20px; margin-bottom: 4px; }
-  .del-sub { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--dusty); font-style: italic; }
-
-  /* Preview mock */
-  .report-preview {
-    background: var(--ink);
-    padding: 40px;
-    position: relative;
-    box-shadow: 16px 16px 0 var(--rust);
-  }
-  .report-preview::before {
-    content: 'lifePRINT AI™';
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 24px;
-  }
-  .report-line {
-    height: 1px;
-    background: rgba(245,240,232,0.1);
-    margin: 12px 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .report-line::after {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    background: rgba(201,148,42,0.4);
-    animation: scan 3s ease-in-out infinite;
-  }
-  .report-line:nth-child(2)::after { width: 85%; animation-delay: 0.2s; }
-  .report-line:nth-child(3)::after { width: 62%; animation-delay: 0.4s; }
-  .report-line:nth-child(4)::after { width: 90%; animation-delay: 0.1s; }
-  .report-line:nth-child(5)::after { width: 45%; animation-delay: 0.6s; }
-
-  .report-section-mock { margin: 28px 0; }
-  .report-section-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    color: var(--rust);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  @keyframes scan {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-  }
-
-  .report-tag {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    border: 1px solid rgba(201,148,42,0.3);
-    color: var(--gold);
-    padding: 4px 10px;
-    margin: 3px;
-  }
-
-  .preview-cta {
-    margin-top: 32px;
-    display: block;
-    border: 1px solid rgba(245,240,232,0.2);
-    color: rgba(245,240,232,0.6);
-    padding: 14px 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-align: center;
-    transition: all 0.2s;
-  }
-  .preview-cta:hover { background: rgba(245,240,232,0.05); color: var(--paper); }
-
-  /* PRICING */
-  .pricing-section { background: var(--paper); text-align: center; }
-
-  .pricing-headline {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(38px, 4.5vw, 64px);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 16px;
-  }
-  .pricing-headline em { font-style: italic; color: var(--rust); }
-
-  .pricing-sub {
-    font-size: 18px;
-    color: var(--dusty);
-    font-weight: 300;
-    margin-bottom: 72px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-  }
-
-  .price-display { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 48px; }
-  .price-rupee { font-family: 'Instrument Serif', serif; font-size: 100px; line-height: 0.9; font-weight: 400; color: var(--ink); position: relative; }
-  .price-rupee sup { font-size: 36px; vertical-align: super; position: relative; top: -10px; }
-  .price-compare { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dusty); }
-  .price-compare del { opacity: 0.5; }
-
-  .pricing-cta {
-    display: inline-block;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 22px 52px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    box-shadow: 6px 6px 0 var(--ink);
-    transition: all 0.2s;
-    margin-bottom: 20px;
-  }
-  .pricing-cta:hover { background: var(--ink); transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--rust); }
-
-  .pricing-note { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--dusty); text-transform: uppercase; margin-top: 8px; }
-
-  .guarantee-strip {
-    margin-top: 64px;
-    padding: 32px 48px;
-    background: var(--cream);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-  .guarantee-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--dusty);
-  }
-  .guarantee-bullet { width: 5px; height: 5px; background: var(--rust); border-radius: 50%; flex-shrink: 0; }
-
-  /* TRADITIONS */
-  .traditions-wrap { margin: 32px 0 8px; }
-  .traditions-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--dusty);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .traditions-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--dusty); opacity: 0.4; }
-  .traditions-cloud { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-bottom: 20px; }
-  .trad {
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--ink);
-    background: var(--cream);
-    border: 1px solid rgba(15,13,10,0.1);
-    padding: 6px 14px;
-    line-height: 1;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    cursor: default;
-  }
-  .trad:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-  .trad-sm { font-size: 14px; font-style: italic; opacity: 0.75; }
-  .trad-md { font-size: 17px; }
-  .trad-lg { font-size: 21px; font-weight: 400; }
-  .traditions-bridge { display: flex; align-items: center; gap: 14px; margin: 4px 0 8px; }
-  .bridge-line { flex: 1; height: 1px; background: rgba(184,66,10,0.25); max-width: 60px; }
-  .bridge-text { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); }
-
-  /* FINAL CTA */
-  .final-section {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 160px 64px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .final-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(184,66,10,0.15) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .final-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 32px; }
-  .final-headline {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(44px, 6vw, 90px);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.0;
-    margin-bottom: 32px;
-  }
-  .final-headline em { font-style: italic; color: var(--gold); }
-  .final-sub { font-size: 20px; color: rgba(245,240,232,0.5); font-weight: 300; line-height: 1.6; max-width: 520px; margin: 0 auto 60px; }
-  .final-cta {
-    display: inline-block;
-    background: var(--rust);
-    color: var(--paper);
-    padding: 24px 60px;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    box-shadow: 6px 6px 0 var(--gold);
-    transition: all 0.2s;
-  }
-  .final-cta:hover { background: var(--gold); transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--paper); }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    border-top: none;
-    padding: 32px 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  footer p { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(245,240,232,0.25); }
-  footer a { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--rust); text-decoration: underline; }
-
-  /* ANIMATIONS */
-  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-  /* FOOTER BANNER */
-  .footer-banner { background: var(--ink); padding: 0; line-height: 0; margin-bottom: 0; }
-  .footer-banner img { width: 100%; height: auto; display: block; max-height: 320px; object-fit: cover; object-position: center; }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 14px 20px; }
-    .nav-logo { font-size: 13px; }
-    .nav-cta { font-size: 9px; padding: 8px 14px; letter-spacing: 0.1em; }
-
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 110px 24px 48px; }
-    .hero-right { min-height: 320px; }
-    .orbital-art { width: 240px; height: 240px; }
-    .hero-text-overlay { left: 24px; right: 24px; bottom: 24px; }
-    .hero-cta-group { max-width: 100%; }
-    .btn-primary, .btn-secondary { font-size: 10px; padding: 16px 20px; letter-spacing: 0.12em; }
-
-    section { padding: 64px 24px; }
-    .section-rule { margin: 0 24px; }
-    .mirror-section { padding: 64px 24px; }
-    .mirror-grid { grid-template-columns: 1fr; gap: 48px; }
-
-    .trust-bar { padding: 18px 20px; gap: 16px; justify-content: flex-start; }
-    .trust-item { font-size: 9px; }
-
-    .what-grid, .why-grid, .get-grid { grid-template-columns: 1fr; gap: 40px; }
-    .what-headline { font-size: clamp(32px, 8vw, 52px); }
-    .what-body { font-size: 17px; }
-    .inputs-panel { padding: 32px 24px; }
-
-    .dimensions-grid { grid-template-columns: 1fr; gap: 2px; }
-    .dim-card { padding: 28px 24px; }
-    .dimensions-intro { margin-bottom: 48px; }
-    .dimensions-intro h2 { font-size: clamp(28px, 7vw, 44px); }
-
-    .mirror-left h2, .why-left h2 { font-size: clamp(28px, 7vw, 46px); }
-    .story-card { padding: 36px 24px; }
-    .story-text { font-size: 19px; }
-
-    .how-headline { font-size: clamp(28px, 7vw, 44px); margin-bottom: 40px; }
-    .steps-list .step { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
-    .step-badge { width: fit-content; font-size: 8px; }
-
-    .get-title { font-size: clamp(28px, 7vw, 44px); }
-    .report-preview { padding: 28px 24px; box-shadow: 8px 8px 0 var(--rust); }
-
-    .pricing-section { padding: 80px 24px; }
-    .pricing-headline { font-size: clamp(30px, 8vw, 52px); }
-    .price-rupee { font-size: 72px; }
-    .pricing-cta { padding: 18px 32px; font-size: 11px; }
-    .guarantee-strip { padding: 20px 24px; gap: 16px; }
-    .guarantee-item { font-size: 9px; }
-
-    .final-section { padding: 80px 24px; }
-    .final-headline { font-size: clamp(36px, 9vw, 72px); }
-    .final-sub { font-size: 17px; }
-    .final-cta { padding: 18px 36px; font-size: 11px; }
-
-    .footer-banner img { max-height: 200px; object-position: left center; }
-    footer { padding: 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
-
-    .traditions-cloud { gap: 6px 8px; }
-    .trad-lg { font-size: 17px; }
-    .trad-md { font-size: 15px; }
-    .trad-sm { font-size: 13px; }
-  }
-
-  @media (max-width: 480px) {
-    .nav-cta { display: none; }
-    .hero-left { padding: 90px 20px 40px; }
-    .hero-right { min-height: 260px; }
-    .orbital-art { width: 200px; height: 200px; }
-    .hero-title { font-size: clamp(38px, 11vw, 56px); }
-    .hero-subtitle { font-size: 16px; }
-    .price-main { font-size: 32px; }
-    section { padding: 52px 20px; }
-    .trust-bar { gap: 12px; }
-    .trust-item { font-size: 8.5px; gap: 7px; }
-    .dim-card { padding: 24px 20px; }
-    .dim-title { font-size: 19px; }
-    .step-content h3 { font-size: 20px; }
-    .step-content p { font-size: 15px; }
-    .del-label { font-size: 18px; }
-    .pricing-cta { width: 100%; text-align: center; box-sizing: border-box; }
-    .footer-banner img { max-height: 160px; }
-    footer { padding: 18px 20px; }
-  }
+:root{
+  --charcoal:#23272A; --ink:#16191B; --ink2:#1B1F21; --deepsage:#34433B;
+  --gold:#C3A15C; --gold-lt:#E0C58A; --sage:#8FAB99; --green:#5AA37A;
+  --ice:#ECEFEA; --muted:#8B938C; --line:rgba(236,239,234,.10);
+  --line2:rgba(195,161,92,.28); --panel:rgba(255,255,255,.03);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --max:1220px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink); color:var(--ice); font-family:var(--sans);
+  font-weight:300; line-height:1.6; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{ /* ambient warmth */
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 78% 8%, rgba(52,67,59,.55), transparent 60%),
+    radial-gradient(90% 70% at 12% 100%, rgba(52,67,59,.35), transparent 55%),
+    linear-gradient(180deg,#16191B 0%,#191D1F 40%,#16191B 100%);
+}
+body::after{ /* grain */
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.serif{font-family:var(--serif)}
+.i{font-style:italic;color:var(--gold);font-weight:400}
+.kicker{
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+  font-weight:500;display:inline-block;margin-bottom:22px;
+}
+.kicker::before{content:"";display:inline-block;width:26px;height:1px;background:var(--gold);
+  vertical-align:middle;margin-right:12px;opacity:.7}
+h2.sect{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,52px);
+  line-height:1.08;letter-spacing:-.01em;color:var(--ice)}
+p.lead{color:var(--muted);font-size:clamp(15px,1.5vw,18px);max-width:640px;line-height:1.7;margin-top:20px}
+section{position:relative;padding:clamp(70px,10vw,130px) 0}
+.eyebrow-c{color:var(--sage)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:14px;
+  font-weight:500;letter-spacing:.02em;padding:15px 28px;border-radius:40px;cursor:pointer;
+  border:1px solid transparent;transition:.35s cubic-bezier(.2,.7,.2,1);white-space:nowrap}
+.btn-gold{background:var(--gold);color:#20241F}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 14px 34px rgba(195,161,92,.28)}
+.btn-ghost{background:transparent;color:var(--ice);border-color:var(--line2)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-lt);transform:translateY(-2px)}
+.btn-sm{padding:11px 20px;font-size:13px}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s}
+header.solid{background:rgba(20,23,25,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:19px;letter-spacing:.01em}
+.brand .dotring{width:22px;height:22px;flex:0 0 22px}
+.brand small{font-family:var(--sans);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:32px}
+.navlinks a{font-size:13.5px;color:var(--muted);letter-spacing:.02em;transition:.25s;position:relative}
+.navlinks a:hover{color:var(--ice)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:0}
+.burger span{width:24px;height:1.5px;background:var(--ice);transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:74px;position:relative;overflow:hidden}
+#rings{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-in{position:relative;z-index:2;max-width:820px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(40px,7vw,84px);line-height:1.02;
+  letter-spacing:-.02em;color:var(--ice)}
+.hero p{color:#C3CEC6;font-size:clamp(16px,1.7vw,20px);line-height:1.65;max-width:560px;margin:28px 0 38px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+.scrollcue .bar{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:drop 2.4s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}
+  51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(30px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+.rev.in{opacity:1;transform:none}
+.rev.d1{transition-delay:.08s}.rev.d2{transition-delay:.16s}.rev.d3{transition-delay:.24s}.rev.d4{transition-delay:.32s}
+
+/* TRUST marquee */
+.trust{padding:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust .kicker{display:block;text-align:center;margin-bottom:20px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:56px;width:max-content;animation:scroll 32s linear infinite}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,26px);color:var(--muted);white-space:nowrap;opacity:.7}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Section header block */
+.shead{max-width:720px;margin-bottom:56px}
+
+/* Benefits */
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.bcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:34px 26px;
+  transition:.5s;backdrop-filter:blur(6px)}
+.bcard:hover{border-color:var(--line2);transform:translateY(-6px);background:rgba(52,67,59,.28)}
+.bcard .ic{width:46px;height:46px;margin-bottom:22px;color:var(--gold)}
+.bcard h3{font-family:var(--serif);font-weight:400;font-size:21px;color:var(--ice);margin-bottom:9px}
+.bcard p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* Promise bars */
+.promise{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.bars{display:flex;flex-direction:column;gap:26px}
+.barrow .blabel{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:9px;color:var(--sage)}
+.bartrack{height:16px;border-radius:20px;background:rgba(255,255,255,.05);overflow:hidden}
+.barfill{height:100%;border-radius:20px;width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.barcap{font-size:11px;color:var(--muted);font-style:italic;margin-top:7px}
+.reclaim{margin-top:8px;font-family:var(--serif);font-style:italic;color:var(--gold);font-size:19px;text-align:right}
+.toggle{display:inline-flex;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:30px;padding:4px;margin-top:26px}
+.toggle button{background:none;border:0;color:var(--muted);font-family:var(--sans);font-size:12.5px;padding:9px 18px;border-radius:24px;cursor:pointer;transition:.3s}
+.toggle button.on{background:var(--gold);color:#20241F;font-weight:500}
+
+/* Pathways tabs */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.tab{background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--muted);
+  font-family:var(--serif);font-size:16px;padding:14px 22px;border-radius:12px;cursor:pointer;transition:.35s}
+.tab:hover{color:var(--ice);border-color:var(--line2)}
+.tab.on{background:var(--charcoal);border-color:var(--gold);color:var(--gold-lt)}
+.tab b{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;color:var(--gold);font-weight:500;margin-bottom:4px}
+.panel{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;
+  background:linear-gradient(135deg,rgba(52,67,59,.4),rgba(35,39,42,.5));border:1px solid var(--line);
+  border-radius:24px;padding:48px;min-height:320px}
+.panel.hide{display:none}
+.panel .pv{width:100%;aspect-ratio:16/11;border-radius:18px;position:relative;overflow:hidden}
+.panel h3{font-family:var(--serif);font-weight:400;font-size:32px;margin-bottom:8px}
+.panel .goal{color:#C3CEC6;font-size:16px;line-height:1.6;margin-bottom:26px}
+.proto{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.proto li{display:flex;align-items:center;gap:12px;font-size:15px}
+.proto .rd{width:16px;height:16px;flex:0 0 16px}
+.bestfor{font-size:12.5px;color:var(--muted)}
+.bestfor b{color:var(--gold);letter-spacing:.12em;font-weight:500;margin-right:8px;text-transform:uppercase;font-size:10.5px}
+
+/* Biological age interactive */
+.bio{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.bioface{background:linear-gradient(140deg,#22262A,#1a1e20);border:1px solid var(--line);border-radius:24px;padding:44px}
+.agerow{display:flex;gap:40px;margin-bottom:26px}
+.agebox small{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:6px}
+.agebox .n{font-family:var(--serif);font-weight:300;font-size:68px;line-height:1;color:var(--ice)}
+.agebox.bio-n .n{color:var(--gold)}
+.agebox.bio-n small{color:var(--gold-lt)}
+.gauge{height:12px;border-radius:20px;background:rgba(255,255,255,.06);overflow:hidden;margin:14px 0 10px}
+.gauge>div{height:100%;width:0;background:linear-gradient(90deg,var(--sage),var(--green));border-radius:20px;transition:width .3s}
+.deltapill{display:inline-block;font-size:13px;color:var(--green);background:rgba(90,163,122,.14);
+  padding:7px 16px;border-radius:30px}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.metric{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.metric small{font-size:11px;color:var(--muted);display:block}
+.metric .mv{font-family:var(--serif);font-size:22px;color:var(--green);margin-top:4px}
+.sliderwrap{margin-top:30px}
+.sliderwrap label{font-size:12.5px;color:var(--sage);display:flex;justify-content:space-between;margin-bottom:12px}
+input[type=range]{-webkit-appearance:none;width:100%;height:3px;background:rgba(255,255,255,.14);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+  background:var(--gold);cursor:pointer;box-shadow:0 0 0 6px rgba(195,161,92,.16);transition:.2s}
+input[type=range]::-webkit-slider-thumb:hover{background:var(--gold-lt)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--gold);cursor:pointer}
+
+/* Recovery stack grid */
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rcell{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 20px;transition:.4s}
+.rcell:hover{border-color:var(--line2);transform:translateY(-5px);background:rgba(52,67,59,.3)}
+.rcell .rd{width:20px;height:20px;margin-bottom:14px}
+.rcell h4{font-family:var(--serif);font-weight:400;font-size:17px;color:var(--ice);margin-bottom:5px}
+.rcell p{font-size:12px;color:var(--muted)}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:left}
+.stat .num{font-family:var(--serif);font-weight:300;font-size:clamp(46px,6vw,74px);line-height:1;
+  color:var(--gold);letter-spacing:-.02em}
+.stat .lb{font-size:14.5px;color:var(--ice);margin-top:14px;font-weight:400}
+.stat .sub{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.5}
+
+/* Membership stepper */
+.stepper{display:flex;gap:0;margin-bottom:40px;flex-wrap:wrap}
+.step{flex:1;min-width:120px;text-align:center;cursor:pointer;position:relative;padding-top:8px}
+.step .dot{width:44px;height:44px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;
+  justify-content:center;font-family:var(--serif);font-size:16px;background:rgba(255,255,255,.04);
+  border:1px solid var(--line);color:var(--muted);transition:.4s;position:relative;z-index:2}
+.step.on .dot,.step.done .dot{background:var(--gold);color:#20241F;border-color:var(--gold)}
+.step .st{font-size:12px;color:var(--muted);line-height:1.35;transition:.3s}
+.step.on .st{color:var(--ice)}
+.step::after{content:"";position:absolute;top:30px;left:50%;width:100%;height:1px;background:var(--line);z-index:1}
+.step:last-child::after{display:none}
+.step.done::after{background:var(--gold);opacity:.5}
+.stepdetail{background:linear-gradient(135deg,rgba(52,67,59,.38),rgba(35,39,42,.5));border:1px solid var(--line);
+  border-radius:20px;padding:38px 42px;min-height:150px}
+.stepdetail h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:10px;color:var(--gold-lt)}
+.stepdetail p{color:#C3CEC6;font-size:16px;line-height:1.7;max-width:720px}
+
+/* Partners */
+.pcols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:34px}
+.pcol{border-radius:22px;padding:40px;border:1px solid var(--line)}
+.pcol.you{background:var(--panel)}
+.pcol.we{background:var(--charcoal);border-color:rgba(195,161,92,.3)}
+.pcol h3{font-family:var(--serif);font-weight:400;font-size:23px;margin-bottom:24px}
+.pcol.we h3{color:var(--gold-lt)}
+.pcol ul{list-style:none;display:flex;flex-direction:column;gap:15px}
+.pcol li{display:flex;align-items:center;gap:13px;font-size:15px;color:#C3CEC6}
+.pcol li i{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 7px}
+.ninety{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+.ninety .big{font-family:var(--serif);font-weight:300;font-size:72px;color:var(--gold);line-height:.9}
+.ninety span{font-size:15px;color:var(--muted);max-width:260px}
+.econ{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  border-top:1px solid var(--line);padding-top:44px;margin-top:10px}
+#econchart{width:100%;height:210px}
+.chiplist{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.chip{font-size:11.5px;color:var(--sage);border:1px solid var(--line);border-radius:20px;padding:6px 13px}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;background:none;border:0;color:var(--ice);font-family:var(--serif);
+  font-size:clamp(17px,2vw,21px);text-align:left;padding:26px 40px 26px 0;cursor:pointer;position:relative;font-weight:400}
+.qa button::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:24px;transition:.3s;font-family:var(--sans)}
+.qa.open button::after{transform:translateY(-50%) rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.qa .ans p{color:var(--muted);font-size:15px;line-height:1.7;padding:0 40px 26px 0}
+
+/* CTA + Form */
+.cta{background:linear-gradient(150deg,rgba(52,67,59,.5),rgba(27,31,33,.6));border:1px solid var(--line2);
+  border-radius:28px;padding:clamp(40px,6vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cta h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4vw,46px);line-height:1.08}
+.cta p{color:var(--muted);margin-top:18px;font-size:16px;line-height:1.7}
+form{display:flex;flex-direction:column;gap:16px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px;color:var(--ice);font-family:var(--sans);font-size:14px;outline:none;transition:.3s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);background:rgba(255,255,255,.06)}
+.field select option{background:#1B1F21}
+.field textarea{resize:vertical;min-height:80px}
+.formmsg{display:none;background:rgba(90,163,122,.12);border:1px solid rgba(90,163,122,.4);color:var(--green);
+  border-radius:12px;padding:16px;font-size:14px}
+.formmsg.show{display:block}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:70px 0 40px}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.fbrand .brand{margin-bottom:18px}
+.fbrand p{color:var(--muted);font-size:14px;max-width:280px;line-height:1.7}
+.fcol h5{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:500}
+.fcol a{display:block;color:var(--muted);font-size:14px;margin-bottom:12px;transition:.25s}
+.fcol a:hover{color:var(--ice)}
+.fbot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);
+  padding-top:26px;font-size:12.5px;color:var(--muted);flex-wrap:wrap;gap:12px}
+.note{font-size:11px;color:#6A716B;margin-top:16px;font-style:italic}
+
+/* Mobile menu panel */
+.mobmenu{position:fixed;inset:0;z-index:99;background:rgba(18,21,23,.97);backdrop-filter:blur(10px);
+  transform:translateY(-100%);transition:.5s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;
+  justify-content:center;padding:40px;gap:8px}
+.mobmenu.open{transform:none}
+.mobmenu a{font-family:var(--serif);font-size:30px;color:var(--ice);padding:12px 0;border-bottom:1px solid var(--line)}
+.mobmenu a small{font-family:var(--sans);font-size:12px;color:var(--gold);display:block}
+
+@media(max-width:960px){
+  .navlinks{display:none}
+  .burger{display:flex}
+  .bgrid,.rgrid{grid-template-columns:repeat(2,1fr)}
+  .promise,.bio,.panel,.pcols,.econ,.cta{grid-template-columns:1fr;gap:34px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:36px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .panel .pv{max-width:420px}
+  .stepper{gap:6px}
+  .step{min-width:80px}
+  .step .st{font-size:10.5px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .bgrid,.rgrid,.stats,.fgrid,.frow{grid-template-columns:1fr}
+  .agerow{gap:24px}
+  .agebox .n{font-size:54px}
+  .nav-cta .btn:not(.burger){display:none}
+  .marquee-track{gap:34px}
+  .step::after{display:none}
+  .stepper{justify-content:center}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <span class="nav-logo" style="display:flex;flex-direction:column;gap:2px;line-height:1.3;">
-    <span>lifePRINT AI™</span>
-  </span>
-  <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="nav-cta">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-</nav>
+<!-- svg defs: concentric ring + dot motif -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<g id="ring"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+<circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1" opacity=".8"/>
+<circle cx="12" cy="12" r="2.4" fill="currentColor"/></g></defs></svg>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">For Men Aged 38–58 · The Manhood to Midhood Transition</div>
-    <h1 class="hero-title">
-      Honoring the<br>
-      <em>transition from</em>
-      Manhood to Midhood.
-    </h1>
-    <p class="hero-subtitle">With a little help from AI, and each other. A 20-page high-resolution map of who you are — and who you're becoming.</p>
-
-    <div class="hero-cta-group">
-      <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="btn-primary">Get My lifePRINT AI™ Report at ₹1,499 →</a>
-      <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="btn-secondary">Not sure? See your Free 1-Page Preview First</a>
-      <div class="price-tag">
-        <span class="price-main">₹1,499</span>
-        <span class="price-note">Full 20-page Midhood Report<br>3-hour PDF delivery</span>
-      </div>
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <svg class="dotring" viewBox="0 0 24 24" style="color:var(--gold)"><use href="#ring"/></svg>
+      <span>LifePrint AI<small>Healthspan OS</small></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#promise">The Offer</a>
+      <a href="#pathways">Pathways</a>
+      <a href="#biological">Biological Age</a>
+      <a href="#membership">Membership</a>
+      <a href="#partners">Partners</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#begin" class="btn btn-gold btn-sm">Book an Assessment</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
+</header>
 
-  <div class="hero-right">
-    <div class="hero-right-bg"></div>
-
-    <svg class="orbital-art" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
-      <ellipse class="orbit-ring" cx="210" cy="210" rx="160" ry="60" transform="rotate(-20 210 210)"/>
-      <ellipse class="orbit-ring orbit-ring-2" cx="210" cy="210" rx="120" ry="110" transform="rotate(30 210 210)"/>
-      <ellipse class="orbit-ring orbit-ring-3" cx="210" cy="210" rx="80" ry="170" transform="rotate(10 210 210)"/>
-      <!-- First half arc -->
-      <path d="M 80 210 A 130 130 0 0 1 210 80" fill="none" stroke="rgba(201,148,42,0.25)" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <!-- Second half arc -->
-      <path d="M 210 340 A 130 130 0 0 1 340 210" fill="none" stroke="rgba(184,66,10,0.35)" stroke-width="1.5"/>
-      <!-- Center glyph -->
-      <circle class="center-glyph" cx="210" cy="210" r="28"/>
-      <circle cx="210" cy="210" r="8" fill="rgba(201,148,42,0.6)"/>
-      <line x1="210" y1="182" x2="210" y2="170" stroke="rgba(201,148,42,0.4)" stroke-width="1"/>
-      <line x1="210" y1="238" x2="210" y2="250" stroke="rgba(201,148,42,0.4)" stroke-width="1"/>
-      <line x1="182" y1="210" x2="170" y2="210" stroke="rgba(201,148,42,0.4)" stroke-width="1"/>
-      <line x1="238" y1="210" x2="250" y2="210" stroke="rgba(201,148,42,0.4)" stroke-width="1"/>
-      <!-- Planets -->
-      <circle class="planet-dot" cx="340" cy="185" r="7"/>
-      <circle class="planet-small" cx="100" cy="245" r="5"/>
-      <circle cx="270" cy="110" r="4" fill="rgba(245,240,232,0.3)"/>
-      <circle cx="165" cy="310" r="3" fill="rgba(201,148,42,0.5)"/>
-      <circle cx="315" cy="290" r="4" fill="rgba(184,66,10,0.6)"/>
-      <circle cx="90" cy="160" r="3" fill="rgba(245,240,232,0.2)"/>
-      <!-- Labels -->
-      <text x="90" y="76" fill="rgba(245,240,232,0.3)" font-family="monospace" font-size="7" letter-spacing="1">FIRST HALF</text>
-      <text x="260" y="355" fill="rgba(201,148,42,0.5)" font-family="monospace" font-size="7" letter-spacing="1">SECOND HALF</text>
-      <!-- Subtle grid lines -->
-      <line x1="0" y1="210" x2="420" y2="210" stroke="rgba(245,240,232,0.03)" stroke-width="1"/>
-      <line x1="210" y1="0" x2="210" y2="420" stroke="rgba(245,240,232,0.03)" stroke-width="1"/>
-    </svg>
-
-    <div class="hero-text-overlay">
-      <p>From doing, proving &amp; achieving — into meaning, integration &amp; presence.<br>Your once-in-a-lifetime threshold, honored by AI.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><span class="trust-dot"></span>Men Aged 38–58</div>
-  <div class="trust-item"><span class="trust-dot"></span>20-Page Midhood Report</div>
-  <div class="trust-item"><span class="trust-dot"></span>3-Hour PDF Delivery</div>
-  <div class="trust-item"><span class="trust-dot"></span>AI + Ancient Wisdom</div>
-  <div class="trust-item"><span class="trust-dot"></span>₹1,499 One-Time</div>
+<div class="mobmenu" id="mobmenu">
+  <a href="#promise">The Offer</a>
+  <a href="#pathways">Pathways</a>
+  <a href="#biological">Biological Age</a>
+  <a href="#membership">Membership</a>
+  <a href="#partners">Partners <small>White-label</small></a>
+  <a href="#faq">FAQ</a>
+  <a href="#begin" style="color:var(--gold)">Book an Assessment</a>
 </div>
 
-<!-- MIRROR MOMENT — New "recognition" section -->
-<section class="mirror-section fade-up">
-  <div class="mirror-grid">
-    <div class="mirror-left">
-      <div class="section-label" style="color: var(--gold);">Suddenly, the ambition feels hollow...</div>
-      <h2>The version of "success"<br>sold to you doesn't quite<br><em>fit anymore.</em></h2>
-      <p>The career you built looks different from the inside. The milestones you chased are checked off, but something feels unfinished. You're more irritable at home. Less patient.</p>
-      <p>You're sleeping restlessly. Scrolling longer. Feeling unseen in rooms full of people. You're asking questions you weren't supposed to ask at this age.</p>
-      <p>Modern hustle, relentless performance, identity tied to output — all of it drowns out the inner world for men in their 40s and 50s.</p>
+<!-- HERO -->
+<section class="hero" id="top" style="padding-top:0">
+  <canvas id="rings"></canvas>
+  <div class="wrap hero-in">
+    <span class="kicker">The Healthspan OS</span>
+    <h1>Add years to your life.<br>And life to those <span class="i">years</span>.</h1>
+    <p>A medical grade longevity membership that turns the science of healthy aging into measurable, compounding years of vitality.</p>
+    <div class="hero-cta">
+      <a href="#begin" class="btn btn-gold">Begin Your Assessment</a>
+      <a href="#partners" class="btn btn-ghost">Partner With Us</a>
+    </div>
+  </div>
+  <div class="scrollcue"><span>Scroll</span><div class="bar"></div></div>
+</section>
 
-      <div class="mirror-signals">
-        <div class="mirror-signal">The ambition that drove me feels hollow</div>
-        <div class="mirror-signal">I've achieved the milestones — yet feel unfinished</div>
-        <div class="mirror-signal">I'm asking questions I wasn't supposed to ask</div>
-        <div class="mirror-signal">The man I became and who I'm becoming feel different</div>
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap">
+    <span class="kicker">Built into the world's most trusted spaces</span>
+    <div class="marquee"><div class="marquee-track" id="mq"></div></div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="wrap">
+    <div class="shead rev">
+      <span class="kicker">Designed for how you age</span>
+      <h2 class="sect">Your path to <span class="i">healthspan</span></h2>
+      <p class="lead">Not relaxation. Not appearance. A system built to maximise the years you live in full strength, clarity and independence.</p>
+    </div>
+    <div class="bgrid">
+      <div class="bcard rev d1"><div class="ic" data-ic="calm"></div><h3>Nervous System &amp; Calm</h3><p>Lower the stress load and recalibrate the system that governs recovery.</p></div>
+      <div class="bcard rev d2"><div class="ic" data-ic="sleep"></div><h3>Deep, Restorative Sleep</h3><p>Rebuild the deep and REM sleep your body repairs itself in.</p></div>
+      <div class="bcard rev d3"><div class="ic" data-ic="focus"></div><h3>Sharper Focus &amp; Energy</h3><p>Think and perform at your peak, without the flat afternoons.</p></div>
+      <div class="bcard rev d4"><div class="ic" data-ic="cell"></div><h3>Cellular Regeneration</h3><p>Repair at the source and reactivate dormant longevity pathways.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section id="promise">
+  <div class="wrap promise">
+    <div class="rev">
+      <span class="kicker">The Promise</span>
+      <h2 class="sect">You will live longer. We make sure you live <span class="i">well</span>.</h2>
+      <p class="lead">Lifespan is how long you live. Healthspan is how long you stay strong, sharp and independent. The gap between them is the decade most people quietly lose. Closing it is the entire point of the membership.</p>
+      <div class="toggle" id="promiseToggle">
+        <button data-mode="without" class="on">Without LifePrint</button>
+        <button data-mode="with">With LifePrint</button>
       </div>
     </div>
+    <div class="bars rev d1">
+      <div class="barrow"><div class="blabel"><span>Lifespan</span></div>
+        <div class="bartrack"><div class="barfill" data-w="100" style="background:var(--muted)"></div></div>
+        <div class="barcap">The years you are alive</div></div>
+      <div class="barrow"><div class="blabel"><span>Healthspan</span><span id="hsPct">65%</span></div>
+        <div class="bartrack"><div class="barfill" id="hsBar" data-w="65" style="background:linear-gradient(90deg,var(--sage),var(--green))"></div></div>
+        <div class="barcap" id="hsCap">Years lived in full health</div></div>
+      <div class="reclaim" id="reclaim">A reclaimed decade</div>
+    </div>
+  </div>
+</section>
 
-    <div class="mirror-right">
-      <div class="mirror-question-block">
-        <div class="mirror-q-text">"Is the Man you've become ready to meet who you're becoming?"</div>
-        <p class="mirror-q-sub">Can a report help you navigate the transition from the first half of life — defined by doing, proving, and achieving — into the deeper second half, marked by meaning, integration, and presence?</p>
-        <div style="margin-top:36px; padding-top:28px; border-top: 1px solid rgba(245,240,232,0.08);">
-          <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; margin-bottom:16px;">We invite men aged 38–58</div>
-          <p style="font-family:'Instrument Serif',serif; font-size:18px; font-style:italic; line-height:1.6; color:rgba(245,240,232,0.7);">to join us in honoring this once-in-a-lifetime threshold — with a little help from AI, and each other.</p>
-          <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" style="display:block; margin-top:28px; background:var(--rust); color:var(--paper); padding:18px 28px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; text-align:center; box-shadow: 3px 3px 0 var(--gold); transition: all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.transform='translate(-1px,-1px)'" onmouseout="this.style.background='var(--rust)';this.style.transform='none'">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-<p style="font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic; color:var(--dusty); margin-top:8px; letter-spacing:0.02em;">Special price for first 50 Men. Use coupon code <strong style="color:var(--rust);">MIDHOOD</strong></p>
-        </div>
+<!-- PATHWAYS -->
+<section id="pathways">
+  <div class="wrap">
+    <div class="shead rev">
+      <span class="kicker">Personalize your program</span>
+      <h2 class="sect">Four pathways. One <span class="i">outcome</span>.</h2>
+      <p class="lead">Every membership is tuned to a goal, then continuously adjusted against your numbers.</p>
+    </div>
+    <div class="tabs rev d1" id="tabs"></div>
+    <div id="panels"></div>
+  </div>
+</section>
+
+<!-- BIOLOGICAL AGE -->
+<section id="biological">
+  <div class="wrap bio">
+    <div class="rev">
+      <span class="kicker">The number we move</span>
+      <h2 class="sect">Know how old your body <span class="i">actually</span> is.</h2>
+      <p class="lead">Every membership opens with a biological age assessment across metabolic, cardiovascular and recovery markers. Then we move it, quarter after quarter. Drag to see a typical member's trajectory.</p>
+      <div class="sliderwrap">
+        <label><span>Program timeline</span><span id="qLabel">Baseline</span></label>
+        <input type="range" id="qSlider" min="0" max="8" value="0" step="1">
+      </div>
+    </div>
+    <div class="bioface rev d1">
+      <div class="agerow">
+        <div class="agebox"><small>Chronological</small><div class="n">47</div></div>
+        <div class="agebox bio-n"><small>Biological</small><div class="n" id="bioAge">47</div></div>
+      </div>
+      <div class="gauge"><div id="gaugeFill"></div></div>
+      <span class="deltapill" id="delta">Baseline established</span>
+      <div class="metrics">
+        <div class="metric"><small>VO2 Max</small><div class="mv" id="mVo2">Baseline</div></div>
+        <div class="metric"><small>Heart Rate Variability</small><div class="mv" id="mHrv">+0%</div></div>
+        <div class="metric"><small>Sleep Quality</small><div class="mv" id="mSleep">62 / 100</div></div>
+        <div class="metric"><small>Inflammation (hs-CRP)</small><div class="mv" id="mInf">Elevated</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT IS IT -->
-<section class="what-section fade-up">
-  <div class="section-label">What is the lifePRINT AI™ Midhood Report?</div>
-  <div class="what-grid">
-    <div>
-      <h2 class="what-headline">Not a horoscope.<br><em>Not therapy.</em><br>A mirror for the second half.</h2>
-      <p class="what-body">Humanity has been mapping the self for millennia — across cultures, continents, and centuries. We gathered every serious framework ever built to understand human personality and the great life transitions, and trained AI on all of it.</p>
-      <p class="what-body">The lifePRINT AI™ report does not make predictions or judgments. It provides you with tools to personalize your transition from manhood to midhood. Ideally, what you discover will reflect things you already know — but may not have previously accepted or trusted.</p>
-
-      <div class="traditions-wrap">
-        <div class="traditions-label">The wisdom stack behind your report</div>
-        <div class="traditions-cloud">
-          <span class="trad trad-lg">Astrology</span>
-          <span class="trad trad-sm">I Ching</span>
-          <span class="trad trad-md">Kabbalah</span>
-          <span class="trad trad-sm">Chakra System</span>
-          <span class="trad trad-md">Numerology</span>
-          <span class="trad trad-sm">Tarot</span>
-          <span class="trad trad-md">BaZi</span>
-          <span class="trad trad-sm">Ayurvedic Doshas</span>
-          <span class="trad trad-lg">Enneagram</span>
-          <span class="trad trad-sm">Mayan Calendrics</span>
-          <span class="trad trad-md">Norse Runes</span>
-          <span class="trad trad-sm">Gene Keys</span>
-          <span class="trad trad-md">Islamic Science of Letters</span>
-          <span class="trad trad-sm">Medicine Wheel</span>
-          <span class="trad trad-lg">Jungian Individuation</span>
-        </div>
-        <div class="traditions-bridge">
-          <span class="bridge-line"></span>
-          <span class="bridge-text">synthesized by AI into one midhood map</span>
-          <span class="bridge-line"></span>
-        </div>
-      </div>
-
-      <div class="what-callout">
-        <p>"By better understanding your own strengths and challenges, you will be empowered to make the best choices for yourself — in this second, deeper half of life."</p>
-      </div>
+<!-- RECOVERY STACK -->
+<section id="stack">
+  <div class="wrap">
+    <div class="shead rev">
+      <span class="kicker">The recovery stack</span>
+      <h2 class="sect">Biohacking and recovery, under <span class="i">protocol</span>.</h2>
+      <p class="lead">A full medical-grade hardware stack. Every session feeds your biological age dashboard, so recovery becomes data.</p>
     </div>
-
-    <div>
-      <div class="inputs-panel">
-        <div class="inputs-title">All we need from you. 3 Inputs</div>
-        <div class="input-item">
-          <span class="input-num">01</span>
-          <div>
-            <div class="input-label">Date of Birth</div>
-            <div class="input-sub">Your entry point into linear time</div>
-          </div>
-        </div>
-        <div class="input-item">
-          <span class="input-num">02</span>
-          <div>
-            <div class="input-label">Time of Birth</div>
-            <div class="input-sub">Your precise celestial snapshot. Accuracy up to ±6 hours</div>
-          </div>
-        </div>
-        <div class="input-item">
-          <span class="input-num">03</span>
-          <div>
-            <div class="input-label">City of Birth</div>
-            <div class="input-sub">Your geographic anchor</div>
-          </div>
-        </div>
-        <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="inputs-cta">Submit &amp; Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-      </div>
-    </div>
+    <div class="rgrid" id="rgrid"></div>
   </div>
 </section>
 
-<!-- 7 DIMENSIONS -->
-<section class="dimensions-section fade-up">
-  <div class="section-label">What Your Midhood Report Contains</div>
-  <div class="dimensions-intro">
-    <h2>Seven dimensions.<br>One complete picture of your transition.</h2>
-    <p>Your 20 pages cover every layer of who you are — mapped specifically for the man navigating his 40s and 50s, from moment-to-moment energy to decade-scale identity arcs.</p>
-  </div>
-
-  <div class="dimensions-grid">
-    <div class="dim-card">
-      <div class="dim-num">01 / 07</div>
-      <div class="dim-title">Core Operating Mode</div>
-      <p class="dim-body">How you work, how you recharge, how you crash — and what pace actually suits the man you are now, not who you were at 30.</p>
-      <div class="dim-tags">
-        <span>Work Style</span><span>Energy Rhythm</span><span>Stress Response</span><span>Decision Cadence</span>
-      </div>
+<!-- STATS -->
+<section id="outcomes">
+  <div class="wrap">
+    <div class="shead rev">
+      <span class="kicker">Measurable outcomes</span>
+      <h2 class="sect">Wellness you can <span class="i">measure</span>.</h2>
     </div>
-
-    <div class="dim-card">
-      <div class="dim-num">02 / 07</div>
-      <div class="dim-title">Decision-Making Pattern</div>
-      <p class="dim-body">Fast instinctive or slow reflective? Where you lean and why — and how midlife reshapes the way you make your most important calls.</p>
-      <div class="dim-tags">
-        <span>Risk Orientation</span><span>Emotional Cycles</span><span>Validation Bias</span>
-      </div>
+    <div class="stats">
+      <div class="stat rev d1"><div class="num" data-target="6" data-prefix="−" data-suffix=" yrs"></div><div class="lb">Biological age reversed</div><div class="sub">Typical shift after 8 quarters of consistent programming.</div></div>
+      <div class="stat rev d2"><div class="num" data-target="22" data-prefix="+" data-suffix="%"></div><div class="lb">Higher HRV</div><div class="sub">Better autonomic balance and recovery capacity.</div></div>
+      <div class="stat rev d3"><div class="num" data-target="31" data-suffix="%"></div><div class="lb">Better sleep score</div><div class="sub">Deeper, more restorative sleep architecture.</div></div>
+      <div class="stat rev d4"><div class="num" data-target="27" data-suffix="%"></div><div class="lb">Lower stress load</div><div class="sub">Measurably reduced cortisol and self-reported stress.</div></div>
     </div>
-
-    <div class="dim-card">
-      <div class="dim-num">03 / 07</div>
-      <div class="dim-title">Stable vs. Adaptive Traits</div>
-      <p class="dim-body">What's bedrock, and what's flexible. Understanding what cannot — and should not — change is the foundation of a meaningful second half.</p>
-      <div class="dim-tags">
-        <span>Consistent Signals</span><span>Influenceable Zones</span><span>Unshakeable Core</span>
-      </div>
-    </div>
-
-    <div class="dim-card">
-      <div class="dim-num">04 / 07</div>
-      <div class="dim-title">Personality Archetypes</div>
-      <p class="dim-body">Your role in groups shifts in midlife. Leadership vs. influence mode. How you handle conflict — and how others experience the man you're becoming.</p>
-      <div class="dim-tags">
-        <span>Group Role</span><span>Leadership Style</span><span>Conflict Pattern</span>
-      </div>
-    </div>
-
-    <div class="dim-card">
-      <div class="dim-num">05 / 07</div>
-      <div class="dim-title">Talent Signature</div>
-      <p class="dim-body">Natural strengths that deepen with age. Motivation drivers that evolve. Burnout triggers that become louder in your 40s — and how to work with them.</p>
-      <div class="dim-tags">
-        <span>Natural Strengths</span><span>Motivation Drivers</span><span>Burnout Triggers</span>
-      </div>
-    </div>
-
-    <div class="dim-card">
-      <div class="dim-num">06 / 07</div>
-      <div class="dim-title">Midhood Phase Mapping</div>
-      <p class="dim-body">Early-life pattern themes. Mid-life friction zones. Reinvention windows. The arc of your identity — and where you are on it right now.</p>
-      <div class="dim-tags">
-        <span>Friction Zones</span><span>Reinvention Windows</span><span>Identity Arcs</span>
-      </div>
-    </div>
-
-    <div class="dim-card" style="grid-column: 1 / -1; background: var(--ink); color: var(--paper);">
-      <div class="dim-num" style="color: var(--gold);">07 / 07 — Integration Layer</div>
-      <div class="dim-title" style="color: var(--gold);">What To Actually Do With All Of This</div>
-      <p class="dim-body" style="color: rgba(245,240,232,0.55); max-width: 640px;">Career repositioning for the second half. Your personal decision rules. An energy management playbook. Relationship strategy. And the exact leverage points for your growth — specific to your wiring, not generic midlife advice. This is not a prediction. It is a personalised map for the most important transition a man makes.</p>
-      <div style="margin-top: 28px;">
-        <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" style="display:inline-block; background:var(--rust); color:var(--paper); padding:16px 32px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; box-shadow: 3px 3px 0 var(--gold); transition: all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.transform='translate(-1px,-1px)'" onmouseout="this.style.background='var(--rust)';this.style.transform='none'">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-      </div>
-    </div>
+    <p class="note">Representative outcomes drawn from consistent program use. Individual results vary and are not a medical guarantee.</p>
   </div>
 </section>
 
-<!-- WHY -->
-<section class="why-section fade-up">
-  <div class="why-grid">
-    <div class="why-left">
-      <div class="section-label" style="color: var(--gold);">Why This Exists</div>
-      <h2>Men in their 40s and 50s don't just want productivity tools.<br><em>They want identity clarity.</em></h2>
-      <p>Modern hustle, relentless performance, identity tied to output — all of it drowns out the inner world. The first half of life is defined by doing, proving, and achieving. The second half asks a different question entirely.</p>
-      <p>From Jung to the great wisdom traditions, men have always known there is a threshold between who they were and who they are called to become. We built AI to help you cross it.</p>
-
-      <div class="why-questions">
-        <div class="why-q">Is the Man I've become ready to meet who I'm becoming?</div>
-        <div class="why-q">What does meaning, integration &amp; presence look like for me?</div>
-        <div class="why-q">What is my path in this second, deeper half of life?</div>
-      </div>
+<!-- MEMBERSHIP -->
+<section id="membership">
+  <div class="wrap">
+    <div class="shead rev">
+      <span class="kicker">The model</span>
+      <h2 class="sect">You do not buy therapies. You buy <span class="i">healthspan</span>.</h2>
+      <p class="lead">Membership replaces the one-off spa visit with a continuous system. Value compounds every month. Step through it.</p>
     </div>
-
-    <div class="why-right">
-      <div class="story-card">
-        <div class="story-text">"I built this coming out of a midlife identity crossroads. The questions weren't academic. I needed a framework that could hold complexity — not reduce me to a type or a prediction, but give me a high-resolution map of my own wiring, specific to this threshold I was crossing."</div>
-        <div class="story-byline">— The Founder</div>
-      </div>
-
-      <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="why-cta">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-<p style="font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic; color:var(--dusty); margin-top:8px; letter-spacing:0.02em;">Special price for first 50 Men. Use coupon code <strong style="color:var(--rust);">MIDHOOD</strong></p>
-    </div>
+    <div class="stepper rev d1" id="stepper"></div>
+    <div class="stepdetail rev d1" id="stepDetail"></div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how-section fade-up">
-  <div class="section-label">How It Works</div>
-  <h2 class="how-headline">Four steps.<br>One map for your transition.</h2>
-
-  <div class="steps-list">
-    <div class="step">
-      <div class="step-num"></div>
-      <div class="step-content">
-        <h3>Share your three inputs</h3>
-        <p>Date, time, and city of birth. That's the entire input. Takes under 60 seconds.</p>
-      </div>
-      <div class="step-badge">60 Seconds<br>to submit</div>
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="wrap">
+    <div class="shead rev">
+      <span class="kicker">For partners</span>
+      <h2 class="sect">The same offer, under <span class="i">your brand</span>.</h2>
+      <p class="lead">Hotels, hospitals and premium wellness brands supply the space and the trust. We supply everything else.</p>
     </div>
-
-    <div class="step">
-      <div class="step-num"></div>
-      <div class="step-content">
-        <h3>AI processes your inputs with our model</h3>
-        <p>LLMs synthesize and hyper-personalize your pattern frameworks across your unique signature — calibrated for where you are in midlife.</p>
-      </div>
-      <div class="step-badge">Your Inputs +<br>AI-powered synthesis</div>
+    <div class="ninety rev d1"><div class="big">90</div><span>days to launch a medical grade longevity studio, live under your own brand.</span></div>
+    <div class="pcols rev d1">
+      <div class="pcol you"><h3>You provide</h3><ul>
+        <li><i></i>Space</li><li><i></i>Customers</li><li><i></i>Local staff</li><li><i></i>Your trusted brand</li></ul></div>
+      <div class="pcol we"><h3>We provide</h3><ul>
+        <li><i></i>Clinical protocols &amp; SOPs</li><li><i></i>Equipment &amp; hardware stack</li>
+        <li><i></i>Technology &amp; member app</li><li><i></i>Operations, training &amp; QA</li>
+        <li><i></i>Marketing &amp; member growth</li><li><i></i>Continuous R&amp;D and innovation</li></ul></div>
     </div>
-
-    <div class="step">
-      <div class="step-num"></div>
-      <div class="step-content">
-        <h3>Your 20-page Midhood Report is generated</h3>
-        <p>Beautifully designed PDF, covering all 7 dimensions with an integration layer specific to your wiring and your transition.</p>
-      </div>
-      <div class="step-badge">20 Pages<br>Beautifully designed</div>
-    </div>
-
-    <div class="step">
-      <div class="step-num"></div>
-      <div class="step-content">
-        <h3>3-hour delivery to your WhatsApp</h3>
-        <p>PDF + shareable social summary card. Keep it, share it, revisit it whenever you need to find your footing.</p>
-      </div>
-      <div class="step-badge">3-hour<br>PDF delivery</div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT YOU GET -->
-<section class="get-section fade-up">
-  <div class="section-label">Everything Included</div>
-  <div class="get-grid">
-    <div>
-      <h2 class="get-title">Your complete<br><em>midhood map</em><br>for ₹1,499.</h2>
-
-      <ul class="deliverables">
-        <li class="deliverable">
-          <div class="del-icon">01</div>
-          <div>
-            <div class="del-label">Full 20-Page lifePRINT AI™ Midhood Report</div>
-            <div class="del-sub">All 7 dimensions, calibrated for men 38–58. Beautifully designed PDF.</div>
-          </div>
-        </li>
-        <li class="deliverable">
-          <div class="del-icon">02</div>
-          <div>
-            <div class="del-label">Free 1-Page Preview</div>
-            <div class="del-sub">See your report style before you pay</div>
-          </div>
-        </li>
-        <li class="deliverable">
-          <div class="del-icon">03</div>
-          <div>
-            <div class="del-label">Shareable Social Card</div>
-            <div class="del-sub">A beautiful summary of your personality signature for this chapter of life</div>
-          </div>
-        </li>
-        <li class="deliverable">
-          <div class="del-icon">04</div>
-          <div>
-            <div class="del-label">Compatibility Matching</div>
-            <div class="del-sub">Compare blueprints with a partner or close friend (additional cost)</div>
-          </div>
-        </li>
-      </ul>
-
-      <div style="margin-top:48px;">
-        <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="btn-primary" style="display:block; max-width:360px;">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-<p style="font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic; color:var(--dusty); margin-top:8px; letter-spacing:0.02em;">Special price for first 50 Men. Use coupon code <strong style="color:var(--rust);">MIDHOOD</strong></p>
-      </div>
-    </div>
-
-    <div>
-      <div class="report-preview">
-        <div class="report-section-mock">
-          <div class="report-section-title">Midhood Phase Mapping</div>
-          <div class="report-line"></div>
-          <div class="report-line"></div>
-          <div class="report-line"></div>
-          <div style="margin-top:14px; display:flex; flex-wrap:wrap;">
-            <span class="report-tag">Reinvention Window</span>
-            <span class="report-tag">Integration Mode</span>
-            <span class="report-tag">Depth Seeker</span>
-          </div>
+    <div class="econ rev">
+      <div>
+        <h2 class="sect" style="font-size:clamp(24px,3vw,34px)">Recurring revenue replaces <span class="i">one-time</span> visits.</h2>
+        <p class="lead">Memberships convert episodic spend into predictable, compounding revenue. Every location makes the platform smarter and the next launch faster.</p>
+        <div class="chiplist">
+          <span class="chip">Membership</span><span class="chip">Platform licensing</span><span class="chip">Equipment</span>
+          <span class="chip">Operations fee</span><span class="chip">Training academy</span><span class="chip">Corporate wellness</span>
         </div>
-
-        <div class="report-section-mock">
-          <div class="report-section-title">Core Operating Mode</div>
-          <div class="report-line"></div>
-          <div class="report-line"></div>
-          <div class="report-line"></div>
-          <div class="report-line"></div>
-          <div style="margin-top:14px; display:flex; flex-wrap:wrap;">
-            <span class="report-tag">Rhythmic Processor</span>
-            <span class="report-tag">Deep Focus</span>
-          </div>
-        </div>
-
-        <div class="report-section-mock">
-          <div class="report-section-title">Integration Layer — What To Do With This</div>
-          <div class="report-line"></div>
-          <div class="report-line"></div>
-        </div>
-
-        <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="preview-cta">Request Free 1-Page Preview →</a>
       </div>
+      <canvas id="econchart"></canvas>
+    </div>
+    <div style="margin-top:40px" class="rev"><a href="#begin" class="btn btn-gold">Partner With Us</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="shead rev" style="text-align:center;margin:0 auto 48px">
+      <span class="kicker">Answers</span>
+      <h2 class="sect">Frequently <span class="i">asked</span></h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section id="begin">
+  <div class="wrap">
+    <div class="cta rev">
+      <div>
+        <span class="kicker">Begin</span>
+        <h2>Start with your <span class="i">number</span>.</h2>
+        <p>Book a biological age assessment, or explore bringing a LifePrint studio into your property. We will respond within two working days.</p>
+      </div>
+      <form id="leadForm" novalidate>
+        <div class="frow">
+          <div class="field"><label>Name</label><input type="text" id="fName" required placeholder="Your name"></div>
+          <div class="field"><label>Email</label><input type="email" id="fEmail" required placeholder="you@email.com"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>City</label><input type="text" id="fCity" placeholder="e.g. Bengaluru"></div>
+          <div class="field"><label>I am here as</label><select id="fType">
+            <option>A prospective member</option><option>A hospitality / healthcare partner</option>
+            <option>An investor</option><option>Press</option></select></div>
+        </div>
+        <div class="field"><label>Pathway of interest</label><select id="fPath">
+          <option>Energy &amp; Optimization</option><option>De-Stress &amp; Nervous System</option>
+          <option>Immunity &amp; Renewal</option><option>Deep Cellular Regeneration</option>
+          <option>Not sure yet</option></select></div>
+        <div class="field"><label>Message (optional)</label><textarea id="fMsg" placeholder="Tell us what you are looking for."></textarea></div>
+        <button type="submit" class="btn btn-gold" style="justify-content:center">Request Your Assessment</button>
+        <div class="formmsg" id="formMsg">Thank you. Your request is in. Our team will reach out within two working days.</div>
+      </form>
     </div>
   </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing-section fade-up">
-  <div class="section-label" style="justify-content:center; text-align:left; max-width:200px; margin:0 auto 48px;">Simple Pricing</div>
-
-  <h2 class="pricing-headline">Less than a meal outside.<br><em>A map for a lifetime.</em></h2>
-  <p class="pricing-sub">Midlife coaches charge ₹10,000+ per session. Therapy is ongoing. This is a one-time, permanent artifact of who you actually are — and a compass for the threshold you're crossing.</p>
-
-  <div class="price-display">
-    <div class="price-rupee"><sup>₹</sup>1,499</div>
-    <div class="price-compare">One-time · No subscription · First 50 Men: ₹1,499</div>
-  </div>
-
-  <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="pricing-cta">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-<p style="font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic; color:var(--dusty); margin-top:8px; letter-spacing:0.02em;">Special price for first 50 Men. Use coupon code <strong style="color:var(--rust);">MIDHOOD</strong></p>
-  <span class="pricing-note">Or request a free 1-page preview first</span>
-
-  <div class="guarantee-strip">
-    <div class="guarantee-item"><span class="guarantee-bullet"></span>3-hour PDF delivery</div>
-    <div class="guarantee-item"><span class="guarantee-bullet"></span>Calibrated for men 38–58</div>
-    <div class="guarantee-item"><span class="guarantee-bullet"></span>AI + ancient wisdom synthesis</div>
-    <div class="guarantee-item"><span class="guarantee-bullet"></span>No generic templates</div>
-    <div class="guarantee-item"><span class="guarantee-bullet"></span>Shareable social card included</div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-section">
-  <div class="final-eyebrow">For men at the threshold — aged 38 to 58</div>
-  <h2 class="final-headline">The Man you've become<br>is ready to meet<br><em>who you're becoming.</em></h2>
-  <p class="final-sub">You have done the first half — the doing, the proving, the achieving. Now AI and the wisdom of ages help you navigate the second half that matters most. Are you ready to honor this threshold?</p>
-  <a target="_blank" rel="noopener noreferrer" href="https://wa.me/919844090505" class="final-cta">Get My lifePRINT AI™ Midhood Report at ₹1,499 →</a>
-<p style="font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic; color:var(--dusty); margin-top:8px; letter-spacing:0.02em;">Special price for first 50 Men. Use coupon code <strong style="color:var(--rust);">MIDHOOD</strong></p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 lifePRINT AI™ · All rights reserved · <a href="mailto:lifeprintai@gmail.com" style="color:var(--rust);text-decoration:none;">lifeprintai@gmail.com</a></p>
-  <p>Powered by AI · Personality Science · For Men 38–58</p>
-  <div style="width:100%;border-top:1px solid rgba(245,240,232,0.07);padding-top:20px;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;">
-    <a href="https://drive.google.com/file/d/198R6XjYbLlP0nKvu6zWmi2DxFw3O9zv2/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;border:1px solid rgba(245,240,232,0.15);padding:5px 12px;transition:all 0.2s;" onmouseover="this.style.color='#f5f0e8';this.style.borderColor='#b8420a';this.style.background='rgba(184,66,10,0.12)'" onmouseout="this.style.color='rgba(245,240,232,0.5)';this.style.borderColor='rgba(245,240,232,0.15)';this.style.background='transparent'">DISCLAIMER</a>
-    <a href="https://drive.google.com/file/d/1-aCV1vmPME161YLQ1NEQ6wrH95pvDZLM/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;border:1px solid rgba(245,240,232,0.15);padding:5px 12px;transition:all 0.2s;" onmouseover="this.style.color='#f5f0e8';this.style.borderColor='#b8420a';this.style.background='rgba(184,66,10,0.12)'" onmouseout="this.style.color='rgba(245,240,232,0.5)';this.style.borderColor='rgba(245,240,232,0.15)';this.style.background='transparent'">RETURN &amp; REFUND POLICY</a>
-    <a href="https://drive.google.com/file/d/1doTJS97dMh4RTbdNHokzpfkg0iUXomb_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;border:1px solid rgba(245,240,232,0.15);padding:5px 12px;transition:all 0.2s;" onmouseover="this.style.color='#f5f0e8';this.style.borderColor='#b8420a';this.style.background='rgba(184,66,10,0.12)'" onmouseout="this.style.color='rgba(245,240,232,0.5)';this.style.borderColor='rgba(245,240,232,0.15)';this.style.background='transparent'">PRIVACY POLICY</a>
-    <a href="https://drive.google.com/file/d/1k6MPoiesI4vsHaHXkZNx3wdP3EvXzPDS/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;border:1px solid rgba(245,240,232,0.15);padding:5px 12px;transition:all 0.2s;" onmouseover="this.style.color='#f5f0e8';this.style.borderColor='#b8420a';this.style.background='rgba(184,66,10,0.12)'" onmouseout="this.style.color='rgba(245,240,232,0.5)';this.style.borderColor='rgba(245,240,232,0.15)';this.style.background='transparent'">TERMS &amp; CONDITIONS</a>
-    <a href="https://drive.google.com/file/d/1O5HPPApOrQDq5P8T4B2KAoirMkS0S_EK/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;border:1px solid rgba(245,240,232,0.15);padding:5px 12px;transition:all 0.2s;" onmouseover="this.style.color='#f5f0e8';this.style.borderColor='#b8420a';this.style.background='rgba(184,66,10,0.12)'" onmouseout="this.style.color='rgba(245,240,232,0.5)';this.style.borderColor='rgba(245,240,232,0.15)';this.style.background='transparent'">CANCELLATION POLICY</a>
-    <a href="https://drive.google.com/file/d/1Q_q3BF5SX65o8681q4s6V4WscRVTjsi9/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;border:1px solid rgba(245,240,232,0.15);padding:5px 12px;transition:all 0.2s;" onmouseover="this.style.color='#f5f0e8';this.style.borderColor='#b8420a';this.style.background='rgba(184,66,10,0.12)'" onmouseout="this.style.color='rgba(245,240,232,0.5)';this.style.borderColor='rgba(245,240,232,0.15)';this.style.background='transparent'">SHIPPING POLICY</a>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a href="#top" class="brand"><svg class="dotring" viewBox="0 0 24 24" style="color:var(--gold)"><use href="#ring"/></svg>
+          <span>LifePrint AI<small>Healthspan OS</small></span></a>
+        <p>The operating system for the global longevity economy. Healthspan, operationalized.</p>
+      </div>
+      <div class="fcol"><h5>Offer</h5>
+        <a href="#pathways">Pathways</a><a href="#stack">Recovery Stack</a><a href="#biological">Biological Age</a><a href="#membership">Membership</a></div>
+      <div class="fcol"><h5>Company</h5>
+        <a href="#partners">Partners</a><a href="#outcomes">Outcomes</a><a href="#faq">FAQ</a><a href="#begin">Contact</a></div>
+      <div class="fcol"><h5>Connect</h5>
+        <a href="#begin">Book an Assessment</a><a href="#partners">Become a Studio</a><a href="#top">lifeprint.ai</a></div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 LifePrint AI. All rights reserved.</span>
+      <span>Not medical advice. Assessments are wellness-oriented and complement, not replace, clinical care.</span>
+    </div>
   </div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
+/* ---------- data ---------- */
+const PATHWAYS=[
+ {n:"01",t:"Energy & Optimization",g:"Recharge the body. Sharpen the mind. Perform at your peak, without the flat afternoons.",p:["Glutathione Booster","Cryotherapy","IV Energy Infusion"],f:"founders, executives and high performers.",c:["#3a3320","#C3A15C"]},
+ {n:"02",t:"De-Stress & Nervous System",g:"Restore calm. Lower the stress load. Build resilience and sleep genuinely deeper.",p:["Red Light Therapy","Compression Boots","De-Stress Nutrient Infusion"],f:"chronic stress, poor sleep and burnout recovery.",c:["#232a26","#8FAB99"]},
+ {n:"03",t:"Immunity & Renewal",g:"Lower inflammation. Strengthen immunity. Improve cellular health from the inside out.",p:["B12 Booster","Immunity Infusion","Cryotherapy"],f:"frequent travelers and high-load seasons.",c:["#1f2a24","#5AA37A"]},
+ {n:"04",t:"Deep Cellular Regeneration",g:"Repair at the source. Reactivate the body's dormant longevity pathways.",p:["Hyperbaric Oxygen (HBOT)","Regenerative Ozone Therapy","NAD+ Infusions"],f:"advanced members pursuing biological age reversal.",c:["#191d1b","#34433B"]}
+];
+const STACK=[
+ ["Cryotherapy","Inflammation & recovery"],["Hyperbaric Oxygen","Cellular oxygenation"],["Cold Plunge","Resilience & metabolism"],["Infrared Sauna","Detox & circulation"],
+ ["Red Light Therapy","Mitochondrial energy"],["PEMF","Cellular recharge"],["EMS","Neuromuscular strength"],["Compression","Circulation & recovery"],
+ ["NAD+ Infusion","Cellular repair"],["Regenerative Ozone","Oxidative renewal"],["IV Therapy","Targeted nutrients"],["Sleep Diagnostics","Measurement"]
+];
+const STEPS=[
+ ["Initial Assessment","A full biological age assessment across metabolic, cardiovascular and recovery markers. Your baseline number, established."],
+ ["Biological Age","We translate the data into a single, honest number: how old your body actually is today."],
+ ["Personalized Program","Your pathway and protocols are set against your goals and your markers, not a generic menu."],
+ ["Monthly Recovery","Structured sessions across the recovery stack, sequenced for compounding effect."],
+ ["Continuous Monitoring","Wearables and biomarkers feed the dashboard between visits. Nothing is guessed."],
+ ["Quarterly Review","We read the trend, move the number, and re-tune the program every ninety days."],
+ ["Annual Optimization","A full re-assessment and a fresh year-long plan built on what actually worked for you."]
+];
+const FAQ=[
+ ["Is this medical treatment?","LifePrint is a wellness-oriented longevity program that complements clinical care. Protocols run under medical supervision, but the membership is designed to optimise healthspan, not to diagnose or treat disease."],
+ ["What actually is biological age?","A composite estimate of how your body is functioning versus your calendar age, built from metabolic, cardiovascular and recovery markers. It is the number we track and work to lower over time."],
+ ["How is a membership different from a spa visit?","A spa visit is episodic and unmeasured. A membership is a continuous system: assess, personalize, recover, measure, optimize, with outcomes tracked quarter over quarter."],
+ ["Where are studios available?","We are launching flagship studios inside partner hotels, hospitals and premium wellness brands, with a deliberate focus on high-growth Tier 2 and Tier 3 markets alongside the metros."],
+ ["I run a hotel or hospital. How do I offer this?","Through our white-label model. You provide the space, customers and brand. We provide the clinical protocols, equipment, technology, operations and marketing, and we can be live in under ninety days."]
+];
+const TRUST=["Luxury Hotels","Executive Hospitals","Medical Spas","Senior Living","Corporate Wellness","Destination Resorts"];
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+/* ---------- icons ---------- */
+const ICONS={
+ calm:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 30c6-10 12-10 18 0s12 10 18 0"/><path d="M6 22c6-10 12-10 18 0s12 10 18 0" opacity=".5"/></svg>',
+ sleep:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M30 8a16 16 0 1 0 10 28A18 18 0 0 1 30 8Z"/><circle cx="34" cy="16" r="1.4" fill="currentColor" stroke="none"/></svg>',
+ focus:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="1.8" fill="currentColor" stroke="none"/></svg>',
+ cell:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="5"/><path d="M24 9v6M24 33v6M9 24h6M33 24h6"/></svg>'
+};
+document.querySelectorAll('[data-ic]').forEach(e=>e.innerHTML=ICONS[e.dataset.ic]);
+const RINGSVG='<svg class="rd" viewBox="0 0 24 24" style="color:var(--gold)"><use href="#ring"/></svg>';
 
-  document.querySelectorAll('.dim-card').forEach((card, i) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = `opacity 0.5s ${i * 0.08}s ease, transform 0.5s ${i * 0.08}s ease, background 0.2s`;
-    const cardObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-        cardObserver.disconnect();
-      }
-    }, { threshold: 0.15 });
-    cardObserver.observe(card);
-  });
+/* ---------- trust marquee ---------- */
+const mq=document.getElementById('mq');
+const items=[...TRUST,...TRUST];
+mq.innerHTML=items.map(t=>`<span>${t}</span>`).join('');
 
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      nav.style.background = 'rgba(245,240,232,0.95)';
-      nav.style.backdropFilter = 'blur(8px)';
-      nav.style.borderBottom = '1px solid rgba(15,13,10,0.08)';
-      nav.style.mixBlendMode = 'normal';
-    } else {
-      nav.style.background = 'transparent';
-      nav.style.backdropFilter = 'none';
-      nav.style.borderBottom = 'none';
-      nav.style.mixBlendMode = 'multiply';
-    }
-  });
+/* ---------- pathways ---------- */
+const tabs=document.getElementById('tabs'),panels=document.getElementById('panels');
+PATHWAYS.forEach((p,i)=>{
+ const b=document.createElement('button');b.className='tab'+(i===0?' on':'');
+ b.innerHTML=`<b>Pathway ${p.n}</b>${p.t}`;b.onclick=()=>select(i);tabs.appendChild(b);
+ const panel=document.createElement('div');panel.className='panel'+(i===0?'':' hide');
+ panel.innerHTML=`
+  <div>
+   <h3 class="serif">${p.t}</h3>
+   <div class="goal">${p.g}</div>
+   <ul class="proto">${p.p.map(x=>`<li>${RINGSVG}<span>${x}</span></li>`).join('')}</ul>
+   <div class="bestfor"><b>Best for</b>${p.f}</div>
+  </div>
+  <div class="pv" style="background:radial-gradient(120% 120% at 30% 20%, ${p.c[1]}55, transparent 55%),linear-gradient(140deg,${p.c[0]},#15181a)">
+   <svg viewBox="0 0 200 140" style="position:absolute;inset:0;width:100%;height:100%;opacity:.5">
+     ${[40,70,100,130].map(r=>`<circle cx="150" cy="105" r="${r}" fill="none" stroke="${p.c[1]}" stroke-width="1" opacity="${1-r/170}"/>`).join('')}
+     <circle cx="150" cy="105" r="7" fill="${p.c[1]}"/></svg>
+  </div>`;
+ panels.appendChild(panel);
+});
+function select(i){
+ document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',i===j));
+ document.querySelectorAll('.panel').forEach((t,j)=>t.classList.toggle('hide',i!==j));
+}
+
+/* ---------- recovery grid ---------- */
+document.getElementById('rgrid').innerHTML=STACK.map((s,i)=>
+ `<div class="rcell rev d${(i%4)+1}">${RINGSVG}<h4>${s[0]}</h4><p>${s[1]}</p></div>`).join('');
+
+/* ---------- membership stepper ---------- */
+const stepper=document.getElementById('stepper'),stepDetail=document.getElementById('stepDetail');
+STEPS.forEach((s,i)=>{
+ const el=document.createElement('div');el.className='step'+(i===0?' on':'');
+ el.innerHTML=`<div class="dot">${i+1}</div><div class="st">${s[0]}</div>`;
+ el.onclick=()=>setStep(i);stepper.appendChild(el);
+});
+function setStep(i){
+ document.querySelectorAll('.step').forEach((s,j)=>{s.classList.toggle('on',j===i);s.classList.toggle('done',j<i);});
+ stepDetail.innerHTML=`<h3 class="serif">${STEPS[i][0]}</h3><p>${STEPS[i][1]}</p>`;
+}
+setStep(0);
+/* auto advance */
+let stepIdx=0,stepTimer=setInterval(()=>{stepIdx=(stepIdx+1)%STEPS.length;setStep(stepIdx);},4200);
+stepper.addEventListener('click',()=>clearInterval(stepTimer));
+
+/* ---------- FAQ ---------- */
+document.getElementById('faqList').innerHTML=FAQ.map(q=>
+ `<div class="qa"><button>${q[0]}</button><div class="ans"><p>${q[1]}</p></div></div>`).join('');
+document.querySelectorAll('.qa button').forEach(b=>b.onclick=()=>{
+ const qa=b.parentElement,open=qa.classList.contains('open');
+ document.querySelectorAll('.qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ans').style.maxHeight=null;});
+ if(!open){qa.classList.add('open');qa.querySelector('.ans').style.maxHeight=qa.querySelector('.ans').scrollHeight+'px';}
+});
+
+/* ---------- promise toggle + bars ---------- */
+const hsBar=document.getElementById('hsBar'),hsPct=document.getElementById('hsPct'),
+ hsCap=document.getElementById('hsCap'),reclaim=document.getElementById('reclaim');
+function setPromise(mode){
+ const withLP=mode==='with';
+ const pct=withLP?92:65;
+ hsBar.style.width=pct+'%';hsBar.dataset.w=pct;hsPct.textContent=pct+'%';
+ hsCap.textContent=withLP?'Years reclaimed in full health':'The years you feel it slipping';
+ reclaim.textContent=withLP?'+ A reclaimed decade':'The decade most people lose';
+ hsBar.style.background=withLP?'linear-gradient(90deg,var(--sage),var(--green))':'var(--sage)';
+}
+document.querySelectorAll('#promiseToggle button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('#promiseToggle button').forEach(x=>x.classList.remove('on'));
+ b.classList.add('on');setPromise(b.dataset.mode);
+});
+
+/* ---------- biological age slider ---------- */
+const qS=document.getElementById('qSlider');
+function bioUpdate(q){
+ const frac=q/8, bio=(47-6*frac);
+ document.getElementById('bioAge').textContent=Math.round(bio);
+ document.getElementById('gaugeFill').style.width=(frac*100)+'%';
+ document.getElementById('qLabel').textContent=q===0?'Baseline':('Quarter '+q);
+ document.getElementById('delta').textContent=q===0?'Baseline established':('−'+(6*frac).toFixed(1)+' years vs the calendar');
+ document.getElementById('mVo2').textContent=q===0?'Baseline':(frac<.5?'Improving':'Top '+Math.round(30-frac*15)+'%');
+ document.getElementById('mHrv').textContent='+'+Math.round(22*frac)+'%';
+ document.getElementById('mSleep').textContent=Math.round(62+26*frac)+' / 100';
+ document.getElementById('mInf').textContent=q===0?'Elevated':(frac<.6?'Reducing':'Low');
+}
+qS.addEventListener('input',e=>bioUpdate(+e.target.value));
+
+/* ---------- hero canvas rings ---------- */
+const cv=document.getElementById('rings'),cx=cv.getContext('2d');let W,H,t=0;
+function resize(){W=cv.width=cv.offsetWidth*devicePixelRatio;H=cv.height=cv.offsetHeight*devicePixelRatio;}
+resize();addEventListener('resize',resize);
+function draw(){
+ cx.clearRect(0,0,W,H);
+ const ox=W*0.74,oy=H*0.42,base=Math.min(W,H)*0.09;
+ for(let i=0;i<9;i++){
+  const r=base*(i+1)+Math.sin(t/60+i*0.5)*6*devicePixelRatio;
+  cx.beginPath();cx.arc(ox,oy,r,0,Math.PI*2);
+  cx.strokeStyle='rgba(195,161,92,'+(0.32-i*0.032)+')';cx.lineWidth=1.1*devicePixelRatio;cx.stroke();
+ }
+ cx.beginPath();cx.arc(ox,oy,base*0.42,0,Math.PI*2);cx.fillStyle='rgba(195,161,92,.85)';cx.fill();
+ t++;requestAnimationFrame(draw);
+}
+draw();
+
+/* ---------- economics canvas chart ---------- */
+function drawEcon(){
+ const c=document.getElementById('econchart'),g=c.getContext('2d');
+ const w=c.width=c.offsetWidth*devicePixelRatio,h=c.height=c.offsetHeight*devicePixelRatio;
+ g.clearRect(0,0,w,h);
+ const rec=[10,22,36,53,72,94,118,145,175,208,244,283],epi=[30,28,31,27,29,26,28,25,27,24,26,23];
+ const max=290,pad=16*devicePixelRatio;
+ const X=i=>pad+i*(w-pad*2)/(rec.length-1), Y=v=>h-pad-(v/max)*(h-pad*2);
+ // grid
+ g.strokeStyle='rgba(236,239,234,.07)';g.lineWidth=1;
+ for(let k=0;k<=3;k++){const y=pad+k*(h-pad*2)/3;g.beginPath();g.moveTo(pad,y);g.lineTo(w-pad,y);g.stroke();}
+ function line(d,col,fill){
+  g.beginPath();d.forEach((v,i)=>{i?g.lineTo(X(i),Y(v)):g.moveTo(X(i),Y(v));});
+  if(fill){g.lineTo(X(d.length-1),h-pad);g.lineTo(X(0),h-pad);g.closePath();
+   const grd=g.createLinearGradient(0,pad,0,h);grd.addColorStop(0,'rgba(90,163,122,.28)');grd.addColorStop(1,'rgba(90,163,122,0)');g.fillStyle=grd;g.fill();}
+  else{g.strokeStyle=col;g.lineWidth=2.4*devicePixelRatio;g.stroke();}
+ }
+ line(epi,'rgba(139,147,140,.8)',false);
+ line(rec,'#5AA37A',true);g.beginPath();rec.forEach((v,i)=>{i?g.lineTo(X(i),Y(v)):g.moveTo(X(i),Y(v));});
+ g.strokeStyle='#5AA37A';g.lineWidth=2.6*devicePixelRatio;g.stroke();
+ // end dot
+ g.beginPath();g.arc(X(rec.length-1),Y(rec[rec.length-1]),4*devicePixelRatio,0,7);g.fillStyle='#C3A15C';g.fill();
+}
+
+/* ---------- scroll reveal + counters + econ ---------- */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+ e.target.classList.add('in');
+ if(e.target.dataset.target!==undefined)runCounter(e.target);
+ if(e.target.id==='partners')drawEcon();
+ }});},{threshold:.18});
+document.querySelectorAll('.rev').forEach(e=>io.observe(e));
+document.querySelectorAll('.num[data-target]').forEach(e=>io.observe(e));
+io.observe(document.getElementById('partners'));
+// trigger initial bar fill on promise view
+io.observe(document.getElementById('promise'));
+document.getElementById('promise').addEventListener('transitionstart',()=>{});
+new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+ document.querySelectorAll('#promise .barfill').forEach(b=>b.style.width=b.dataset.w+'%');
+}});},{threshold:.3}).observe(document.getElementById('promise'));
+
+function runCounter(el){
+ if(el._done)return;el._done=1;
+ const tgt=+el.dataset.target,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+ let s=0,dur=1400,t0=performance.now();
+ (function step(now){let p=Math.min((now-t0)/dur,1);p=1-Math.pow(1-p,3);
+  el.textContent=pre+Math.round(tgt*p)+suf;if(p<1)requestAnimationFrame(step);})(t0);
+}
+addEventListener('resize',()=>{if(document.getElementById('partners').classList.contains('in'))drawEcon();});
+
+/* ---------- nav ---------- */
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40));
+const burger=document.getElementById('burger'),mob=document.getElementById('mobmenu');
+burger.onclick=()=>{burger.classList.toggle('open');mob.classList.toggle('open');};
+mob.querySelectorAll('a').forEach(a=>a.onclick=()=>{burger.classList.remove('open');mob.classList.remove('open');});
+
+/* ---------- form ---------- */
+document.getElementById('leadForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const nm=document.getElementById('fName'),em=document.getElementById('fEmail');
+ let ok=true;[nm,em].forEach(f=>{if(!f.value.trim()){f.style.borderColor='#b5563f';ok=false;}else f.style.borderColor='';});
+ if(em.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){em.style.borderColor='#b5563f';ok=false;}
+ if(!ok)return;
+ document.getElementById('formMsg').classList.add('show');
+ e.target.querySelector('button[type=submit]').textContent='Request Received';
+ setTimeout(()=>{e.target.reset();},400);
+});
 </script>
 </body>
 </html>
